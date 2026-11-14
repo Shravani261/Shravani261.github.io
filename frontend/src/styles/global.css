@@ -814,5 +814,45 @@ nav a[aria-current=page]{box-shadow:none}
     grid-template-columns: 1fr;
   }
 }
-
+/* ---- Mobile fix: stop the hero from being wider than the phone ---- */
+@media (max-width: 767px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .hero, .hbody, .txt, .pwrap, .hd {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .hbody {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .name {
+    font-size: clamp(40px, 13vw, 64px) !important;
+    line-height: 1.05 !important;
+    overflow-wrap: anywhere;
+  }
+  .hero .hd {
+    flex-wrap: wrap !important;
+  }
+  .hero .hd nav {
+    max-width: 100% !important;
+    overflow-x: auto;
+  }
+  .hero .hd nav ul {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .hero .row {
+    flex-wrap: wrap !important;
+    gap: 10px;
+  }
+  .hero .btn {
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+    white-space: normal !important;
+    max-width: 100%;
+  }
+}
 
