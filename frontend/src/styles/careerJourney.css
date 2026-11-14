@@ -1,0 +1,117 @@
+/* =====================================================================
+   Career Journey page only (/experience). Imported by ExperiencePage.tsx.
+   Everything is scoped to .cj / .cj-* or to .jny so no other page changes.
+   It re-uses the site's colour tokens, so light and dark themes both work.
+   ===================================================================== */
+
+/* ---- story strip above the timeline ---- */
+.cj-story{list-style:none;margin:26px 0 0;padding:14px 20px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 2px;background:var(--card);border:3px solid var(--white);border-radius:26px;box-shadow:var(--sh)}
+.cj-story li{display:flex;align-items:center}
+.cj-step{border:2px solid var(--ink);background:var(--c);color:#0B2348;border-radius:99px;padding:7px 16px;font-weight:700;font-size:14px;display:inline-flex;gap:8px;align-items:center;transition:transform .2s,box-shadow .2s}
+.cj-step i{font-style:normal;font-size:17px}
+.cj-step:hover,.cj-step:focus-visible{transform:translateY(-3px);box-shadow:0 6px 0 rgba(0,0,0,.14)}
+.cj-arrow{font-weight:800;font-size:18px;opacity:.55;padding:0 8px}
+.cj-arrow.pivot{opacity:1;color:var(--act);animation:cj-nudge 1.8s ease-in-out infinite}
+@keyframes cj-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
+/* ---- journey map (left): connecting lines between the numbered stops ---- */
+.cj .jmap li{position:relative;display:flex;min-height:60px;--dir:to bottom}
+.cj .jmap li::after{content:"";position:absolute;left:23px;top:calc(50% + 15px);width:4px;height:calc(100% - 22px);border-radius:4px;
+  background:linear-gradient(var(--dir),var(--c),var(--n));box-shadow:0 0 0 1.5px color-mix(in srgb,var(--ink) 22%,transparent);opacity:.5;transition:opacity .5s ease;pointer-events:none}
+.cj .jmap li:last-child::after{display:none}
+.cj .jmap li[data-done]::after{opacity:1}
+.cj .jmap li.cj-dash::after{background:repeating-linear-gradient(var(--dir),var(--ink) 0 5px,transparent 5px 10px);box-shadow:none;opacity:.3}
+.cj .jmap li.cj-dash[data-done]::after{opacity:.7}
+.cj .jmap button[aria-current=step] .jlabel{color:var(--ink)}
+.cj .jlabel{transition:transform .25s}
+.cj .jmap button[aria-current=step] .jlabel{transform:translateX(2px)}
+
+/* ---- chapter cards (right) ---- */
+.jny .cj-stages{gap:54px}
+.jny .cj-card{scroll-margin-top:84px;gap:12px;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
+.jny .cj-card.in[data-on]{transform:translateY(-4px)}
+.cj-card h2{margin:0}
+.cj-sub{display:flex;gap:8px;flex-wrap:wrap}
+.cj-pill{background:var(--c);color:#0B2348;border-radius:99px;padding:4px 14px;font-weight:700;font-size:13px;border:2px solid color-mix(in srgb,#0B2348 22%,transparent)}
+.cj-org{display:flex;gap:8px;font-weight:700;font-size:15px;opacity:.85}
+
+.cj-block{display:grid;gap:6px}
+.cj-block h3{font:400 20px 'Patrick Hand',cursive}
+.cj-card .hl{list-style:none;margin:2px 0 4px;padding:0;gap:7px}
+.cj-card .hl li{position:relative;padding-left:28px}
+.cj-card .hl li::before{content:"✓";position:absolute;left:0;top:2px;width:19px;height:19px;border-radius:50%;background:var(--c);color:#0B2348;font-size:11px;font-weight:800;display:grid;place-items:center}
+.jny .cj-card[data-on] .hl li:nth-child(4){transition-delay:.36s}
+.jny .cj-card[data-on] .hl li:nth-child(5){transition-delay:.48s}
+
+/* promotion highlight */
+.cj-milestone{position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;width:fit-content;max-width:100%;padding:10px 18px 10px 14px;border-radius:18px;
+  background:linear-gradient(100deg,#FFF1BF,#FFE08A);color:#0B2348;border:2px dashed #E0A800}
+.cj-milestone .mi{font-size:30px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.2))}
+.cj-milestone small{display:block;font:800 11px Nunito,sans-serif;text-transform:uppercase;letter-spacing:.08em;opacity:.7}
+.cj-milestone b{display:block;font-size:15px;line-height:1.3}
+.cj-milestone::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+.jny .cj-card[data-on] .cj-milestone::after{transform:translateX(120%);transition:transform 1.1s ease .3s}
+.jny .cj-card[data-on] .cj-milestone .mi{animation:cj-pop .7s ease}
+@keyframes cj-pop{0%{transform:scale(.4) rotate(-20deg)}60%{transform:scale(1.25) rotate(8deg)}100%{transform:none}}
+
+/* theme chips (exploration + growth chapters) */
+.cj-themes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.cj-themes li{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:16px;font-weight:700;font-size:14.5px;line-height:1.25;
+  background:color-mix(in srgb,var(--c) 38%,var(--panel));border:2px solid color-mix(in srgb,var(--c) 85%,transparent);
+  opacity:.7;transform:translateY(6px) scale(.97);transition:opacity .45s ease,transform .45s ease}
+.cj-themes i{flex:none;width:36px;height:36px;border-radius:12px;background:var(--panel);display:grid;place-items:center;font-style:normal;font-size:20px}
+.jny .cj-card[data-on] .cj-themes li{opacity:1;transform:none}
+.jny .cj-card[data-on] .cj-themes li:nth-child(2){transition-delay:.08s}
+.jny .cj-card[data-on] .cj-themes li:nth-child(3){transition-delay:.16s}
+.jny .cj-card[data-on] .cj-themes li:nth-child(4){transition-delay:.24s}
+.jny .cj-card[data-on] .cj-themes li:nth-child(5){transition-delay:.32s}
+
+/* the exploration chapter: dashed, dotted "open road" look so it never reads as a job */
+.jny .cj-card[data-kind=exploration]{border-top-style:dashed;background-color:var(--panel);
+  background-image:radial-gradient(color-mix(in srgb,var(--c) 60%,transparent) 1.6px,transparent 1.9px);background-size:20px 20px}
+.jny .cj-card[data-kind=exploration][data-on] .jbadge{animation:cj-spin 1.1s ease}
+@keyframes cj-spin{0%{transform:rotate(-200deg) scale(.7)}100%{transform:rotate(-12deg) scale(1.15)}}
+
+/* the growth chapter: analytics -> business growth transition */
+.jny .cj-card[data-kind=upcoming]{background:linear-gradient(135deg,var(--panel) 45%,color-mix(in srgb,var(--c) 32%,var(--panel)))}
+.cj-shift{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:800;font-size:14px}
+.cj-shift span{display:inline-flex;gap:8px;align-items:center;padding:6px 14px;border-radius:99px;background:var(--bg2);border:2px solid color-mix(in srgb,var(--ink) 22%,transparent)}
+.cj-shift span.to{background:var(--c);color:#0B2348;border-color:#0B2348}
+.cj-shift i{font-style:normal;font-size:18px}
+.cj-shift em{font-style:normal;font-size:24px;line-height:1;color:var(--act)}
+.jny .cj-card[data-on] .cj-shift em{animation:cj-nudge 1.4s ease-in-out infinite}
+
+.jny .cj-card[data-kind=next]{background:linear-gradient(120deg,var(--panel),var(--bg2))}
+
+/* connector between cards, with a small label */
+.cj-bridge{position:absolute;left:50%;top:100%;width:0;height:54px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+.cj-bridge::before{content:"";position:absolute;left:-2px;top:0;bottom:0;width:4px;border-radius:4px;background:linear-gradient(var(--c),var(--n));opacity:.9}
+.cj-bridge.cj-dash::before{background:repeating-linear-gradient(var(--ink) 0 5px,transparent 5px 10px);opacity:.35}
+.cj-bridge b{position:relative;white-space:nowrap;font:700 12.5px Nunito,system-ui,sans-serif;padding:3px 14px;border-radius:99px;background:var(--panel);color:var(--ink);border:2px solid var(--ink);box-shadow:var(--sh)}
+
+/* ---- tablet / mobile ---- */
+@media (max-width:899px){
+  .cj .jmap li{min-height:0;flex:none;--dir:to right}
+  .cj .jmap li::after{left:36px;top:calc(50% - 2px);width:18px;height:4px}
+  .jny .cj-stages{gap:50px}
+}
+/* the site's slide-in starts 60px off to the side; keep it small on narrow screens so the page never widens */
+@media (max-width:899px) and (prefers-reduced-motion:no-preference){
+  .jny .cj-card.rvl:not(.in){transform:translateX(-18px)}
+  .jny .cj-card.rvr:not(.in){transform:translateX(18px)}
+}
+@media (max-width:560px){
+  .cj-story{padding:12px;gap:8px 0}
+  .cj-step{padding:6px 11px;font-size:12.5px}
+  .cj-step i{display:none}
+  .cj-arrow{padding:0 4px;font-size:16px}
+  .jny .cj-card{padding:24px 18px 20px}
+  .cj-themes{grid-template-columns:1fr}
+  .cj-milestone{width:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .cj-arrow.pivot,.cj-milestone .mi,.cj-shift em,.jbadge{animation:none!important}
+  .cj-milestone::after{display:none}
+  .cj-themes li{opacity:1;transform:none}
+  .jny .cj-card.in[data-on]{transform:none}
+}
