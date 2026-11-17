@@ -14,14 +14,16 @@ export default function Hero(props: Props) {
       <div className="pbody">
         <div className="pw-big" aria-hidden="true">PORTFOLIO</div>
         <img className="pw-cut" src="/portrait-think.webp" alt="Portrait of Shravani Jagtap" />
-        <div className="pw-name">
-          <div className="pw-hi">Hi, I’m</div>
-          <h1 className="pw-script">Shravani Jagtap</h1>
-        </div>
-        <div className="pw-right">
-          <div className="pw-role">Data Analyst</div>
-          <p className="pw-tag">Turning data into insights for <span className="ul">smarter</span> decisions</p>
-          <TypeLine />
+        <div className="pw-rcol">
+          <div className="pw-name">
+            <div className="pw-hi">Hi, I’m</div>
+            <h1 className="pw-script"><span>Shravani</span> <span>Jagtap</span></h1>
+          </div>
+          <div className="pw-right">
+            <div className="pw-role">Data Analyst</div>
+            <p className="pw-tag">Turning data into insights for <span className="ul">smarter</span> decisions</p>
+            <TypeLine />
+          </div>
         </div>
         <div className="pw-left">
           <Link className="btn" to="/projects" onClick={() => props.onSelect('projects')}><span aria-hidden="true">📊</span> Explore My Work →</Link>

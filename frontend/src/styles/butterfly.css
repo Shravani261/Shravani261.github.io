@@ -1,0 +1,26 @@
+/* Data butterfly */
+.bee{position:fixed;left:0;top:0;width:64px;height:58px;z-index:60;pointer-events:none;will-change:transform;--flap:.26s;--w1:#F2C811;--w2:#E8A800;--sy:#0B2348}
+.bee-rot{position:absolute;inset:0;will-change:transform}
+.bee-hit{position:absolute;inset:-16px;border-radius:50%;pointer-events:auto;cursor:pointer}
+.bee-art{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 2px rgba(255,255,255,.8)) drop-shadow(0 4px 5px rgba(0,0,0,.35))}
+.bee-pop{animation:beepop .55s ease}
+@keyframes beepop{0%{transform:scale(1)}40%{transform:scale(1.5) rotate(10deg)}100%{transform:scale(1)}}
+.bee .w1{fill:var(--w1);stroke:#0B2348;transition:fill .4s}
+.bee .w2{fill:var(--w2);stroke:#0B2348;transition:fill .4s}
+.bee .sym{fill:#FFF4D6;stroke:#0B2348}
+.bee .line,.bee .code{stroke:var(--sy);transition:stroke .4s}
+.bee .dot{fill:#0B2348}
+.bee .pie3{stroke:var(--w2)}
+.bee .ant{stroke:#0B2348}
+.bee .tip{fill:#FFC83D;stroke:#0B2348;stroke-width:1.2}
+.bee .body{fill:#0B2348}
+.bee .wl,.bee .wr{transform-box:view-box;transform-origin:60px 55px;animation:beeflap var(--flap) ease-in-out infinite alternate}
+@keyframes beeflap{from{transform:scaleX(1)}to{transform:scaleX(.28)}}
+.bee-bubble{position:absolute;left:50%;bottom:calc(100% + 18px);transform:translateX(-50%);width:max-content;max-width:230px;background:#FFC83D;color:#0B2348;border:3px solid #0B2348;border-radius:16px;padding:8px 12px 6px;font:400 17px/1.25 'Patrick Hand',cursive;pointer-events:auto;box-shadow:0 6px 16px rgba(0,0,0,.3);animation:beein .25s ease}
+.bee-bubble.below{bottom:auto;top:calc(100% + 18px)}
+.bee-bubble.right{left:auto;right:0;transform:none}
+.bee-bubble b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.bee-shoo{display:block;margin:4px 0 0 auto;font:inherit;font-size:14px;background:none;border:0;padding:0;color:#0B2348;opacity:.65;cursor:pointer;text-decoration:underline}
+@keyframes beein{from{opacity:0;margin-top:6px}to{opacity:1;margin-top:0}}
+@media (max-width:767px){.bee{width:52px;height:47px}.bee-bubble{max-width:200px}}
+@media (prefers-reduced-motion:reduce){.bee .wl,.bee .wr{animation:none}.bee-pop{animation:none}}
